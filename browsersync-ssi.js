@@ -10,10 +10,11 @@ module.exports = function browserSyncSSI(opt) {
   var opt = opt || {};
   var ext = opt.ext || '.shtml';
   var baseDir = opt.baseDir || __dirname;
-  var matcher = '/**/*' + ext;
+  var matcher = opt.matcher || '/**/*' + ext;
+  var loosenedSpace = opt.loosenedSpace;
   var bsURL;
 
-  var parser = new ssi(baseDir, baseDir, matcher);
+  var parser = new ssi(baseDir, baseDir, matcher, loosenedSpace);
 
   return function(req, res, next) {
 
